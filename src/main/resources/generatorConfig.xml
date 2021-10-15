@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration >
+    <!-- 数据库驱动包位置 -->
+    <classPathEntry location="C:\Users\linewell\.m2\repository\mysql\mysql-connector-java\5.0.7\mysql-connector-java-5.0.7.jar"/>
+
+    <context id="context1">
+        <property name="javaFileEncoding" value="UTF-8"/>
+        <commentGenerator type="org.mybatis.generator.MyCommentGenerator"></commentGenerator>
+        <!-- <commentGenerator>
+            是否去除自动生成的注释 true：是 ： false:否
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>   -->
+        <!-- 数据库链接URL、用户名、密码 -->
+        <jdbcConnection
+                driverClass="com.mysql.jdbc.Driver"
+                connectionURL="jdbc:mysql://localhost:3306/mysql?serverTimezone=GMT%2B8&amp;useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=false&amp;allowMultiQueries=true"
+                userId="root"
+                password="123456"/>
+        <!-- 实体类生成的位置 -->
+        <javaModelGenerator
+                targetPackage="org.mybatis.generator.entity.pojo"
+                targetProject=".\src\main\java">
+            <property name="enableSubPackages" value="false"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <!-- *Mapper.xml 文件的位置  sqlMapGenerator-->
+        <sqlMapGenerator
+                targetPackage="mapper"
+                targetProject=".\src\main\resources">
+            <property name="enableSubPackages" value="false"/>
+        </sqlMapGenerator>
+
+        <!-- Mapper 接口文件的位置 -->
+        <javaClientGenerator type="XMLMAPPER"
+                             targetPackage="org.mybatis.generator.mapper"
+                             targetProject=".\src\main\java">
+            <property name="enableSubPackages" value="false"/>
+        </javaClientGenerator>
+        
+        <!-- 要生成的那些表(更改tableName 和domainObjectName 就可以了) -->
+        <table tableName="apply_invocation" domainObjectName="ApplyInvocationDO" enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+            <columnOverride column="object_type" javaType="java.lang.Integer" jdbcType="TINYINT" />
+            <columnOverride column="status" javaType="java.lang.Integer" jdbcType="TINYINT" />
+            <columnOverride column="result" javaType="java.lang.Integer" jdbcType="TINYINT" />
+            <columnOverride column="delete_flag" javaType="java.lang.Integer" jdbcType="TINYINT" />
+        </table>
+    </context>
+</generatorConfiguration>
